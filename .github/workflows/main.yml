@@ -44,7 +44,7 @@ jobs:
       #   shell: sh
       #   run: $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config)
       - name: simple use remote command
-      - run: |
+        run: |
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           eval `ssh-agent -s`
           echo "$DEPLOY_KEY" | ssh-add -
