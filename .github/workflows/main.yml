@@ -23,9 +23,9 @@ jobs:
         run: docker version
       - name: show gzip version
         run: gzip --version
-      - name: show ssh version
-        run: ssh --version
-      - name: show scp version
-        run: scp --version
       - name: show os version
         run: cat /etc/os-release
+      - name: show scp version
+        run: scp --version
+      - name: show ssh version
+        run: ssh --version
