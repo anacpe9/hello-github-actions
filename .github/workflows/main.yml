@@ -20,9 +20,12 @@ jobs:
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
+          ssh --version
+          scp --version
           cat /etc/os-release
+          echo "---------------------"
           echo "$DEPLOY_KEY"
+          echo "---------------------"
           docker version
           gzip --version
-          ssh --version
-          # scp --version
+          echo "---------------------"
