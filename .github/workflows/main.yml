@@ -41,12 +41,15 @@ jobs:
         run: free
       - name: simple use remote command
         run: mkdir -p ~/.ssh && chmod 700 ~/.ssh
-      - run: echo "$DEPLOY_KEY" > temp.txt && echo "my line" > temp.txt && cat temp.txt
+      # - run: echo "$DEPLOY_KEY" > temp.txt && echo "my line" > temp.txt && cat temp.txt
       # - name: is inside docker ?
       #   shell: sh
       #   run: $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config)
-      - run: eval $(ssh-agent -s) && echo "$DEPLOY_KEY" | ssh-add -
-      - run: ssh-add -l
-      - run: ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
-      - run: ssh-add -D
-      - run: ssh-add -l
+      - run: |
+        eval $(ssh-agent -s) &&
+        echo "$DEPLOY_KEY" | ssh-add - &&
+        ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
+      # - run: ssh-add -l
+      # - run: ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
+      # - run: ssh-add -D
+      # - run: ssh-add -l
