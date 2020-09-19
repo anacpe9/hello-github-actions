@@ -48,7 +48,8 @@ jobs:
       - run: |
           eval `ssh-agent -s`
           echo "$DEPLOY_KEY" | ssh-add -
-          ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
+          ssh-add l
+          ssh -T ec2-user@3.1.191.125 sudo ifconfig eth0
       # - run: ssh-add -l
       # - run: ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
       # - run: ssh-add -D
