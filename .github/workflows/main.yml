@@ -23,5 +23,6 @@ jobs:
           cat /etc/os-release
           echo "$DEPLOY_KEY"
           docker --version
+          gzip --version
           ssh --version
           scp --version
