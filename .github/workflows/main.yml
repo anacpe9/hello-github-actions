@@ -41,6 +41,7 @@ jobs:
         run: free
       - name: simple use remote command
         run: mkdir -p ~/.ssh
+      - run: echo "$DEPLOY_KEY" >> temp.txt && cat tmp.txt
       # - name: is inside docker ?
       #   shell: sh
       #   run: $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config)
