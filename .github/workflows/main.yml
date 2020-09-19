@@ -10,3 +10,14 @@ jobs:
       - uses: ./action-a
         with:
           MY_NAME: "Mona"
+  
+  versions:
+    name: View all tools maybe used
+    runs-on: ubuntu-latest
+    steps:
+      - name: --version
+        run: |
+          cat /etc/os-release
+          docker --version
+          ssh --version
+          sch --version
