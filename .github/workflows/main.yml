@@ -20,12 +20,18 @@ jobs:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: echo "$DEPLOY_KEY"
       - name: show docker version
-        run: docker version
+        run: |
+          docker version &&
+          docker info
       - name: show gzip version
         run: gzip --version
       - name: show os version
         run: cat /etc/os-release
-      - name: show scp version
-        run: scp --version
-      - name: show ssh version
-        run: ssh --version
+      - name: show scp location
+        run: which scp
+      - name: show ssh location
+        run: which ssh
+      - name: show ssh-add location
+        run: which ssh-add
+      - name: show ssh-agent location
+        run: which ssh-agent
