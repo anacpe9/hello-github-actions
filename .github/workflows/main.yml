@@ -16,8 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: --version
+        shell: sh
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           cat /etc/os-release
+          echo "$DEPLOY_KEY"
           docker --version
           ssh --version
-          sch --version
+          scp --version
