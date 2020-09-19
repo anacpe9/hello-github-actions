@@ -14,10 +14,10 @@ jobs:
   versions:
     name: View all tools maybe used
     runs-on: ubuntu-latest
+    env:
+      DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
     steps:
       - name: show value of environment
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: echo "$DEPLOY_KEY"
       - name: show docker version
         run: |
@@ -40,8 +40,8 @@ jobs:
       - name: show available RAM
         run: free
       - name: simple use remote command
-        run: mkdir -p ~/.ssh
-      - run: echo "$DEPLOY_KEY" >> temp.txt && cat temp.txt
+        run: mkdir -p ~/.ssh && chmod 700 ~/.ssh
+      - run: echo "$DEPLOY_KEY" > temp.txt && echo "my line" > temp.txt && cat temp.txt
       # - name: is inside docker ?
       #   shell: sh
       #   run: $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config)
