@@ -35,3 +35,7 @@ jobs:
         run: which ssh-add
       - name: show ssh-agent location
         run: which ssh-agent
+      - name: show amount of CPU(s)
+        run: nproc
+      - name: show available RAM
+        run: free
