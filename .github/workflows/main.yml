@@ -47,9 +47,9 @@ jobs:
         run: |
           mkdir -p ~/.ssh && chmod 700 ~/.ssh
           eval `ssh-agent -s`
-          echo "$DEPLOY_KEY" | ssh-add -
+          echo "$DEPLOY_KEY" | tr -d '\r'| ssh-add -
           ssh-add -l
-          ssh -T ec2-user@3.1.191.125 sudo ifconfig eth0
+          ssh -T -o LogLevel=quiet -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ec2-user@3.1.191.125 sudo ifconfig eth0
       # - run: ssh-add -l
       # - run: ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
       # - run: ssh-add -D
