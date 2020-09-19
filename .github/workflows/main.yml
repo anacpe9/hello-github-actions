@@ -40,13 +40,10 @@ jobs:
       - name: show available RAM
         run: free
       - name: simple use remote command
-        env:
-          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        run: |
-          mkdir -p ~/.ssh &&
-          $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config) &&
-          echo "$DEPLOY_KEY" | ssh-add - &&
-          ssh-add -l &&
-          ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0 &&
-          ssh-add -D &&
-          ssh-add -l
+        run: mkdir -p ~/.ssh
+      - run: $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config)
+      - run: echo "$DEPLOY_KEY" | ssh-add -
+      - run: ssh-add -l
+      - run: ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
+      - run: ssh-add -D
+      - run: ssh-add -l
