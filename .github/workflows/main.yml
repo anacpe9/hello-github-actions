@@ -15,17 +15,17 @@ jobs:
     name: View all tools maybe used
     runs-on: ubuntu-latest
     steps:
-      - name: --version
-        shell: sh
+      - name: show value of environment
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-        run: |
-          ssh --version
-          scp --version
-          cat /etc/os-release
-          echo "---------------------"
-          echo "$DEPLOY_KEY"
-          echo "---------------------"
-          docker version
-          gzip --version
-          echo "---------------------"
+        run: echo "$DEPLOY_KEY"
+      - name: show docker version
+        run: docker version
+      - name: show gzip version
+        run: gzip --version
+      - name: show ssh version
+        run: ssh --version
+      - name: show scp version
+        run: scp --version
+      - name: show os version
+        run: cat /etc/os-release
