@@ -46,9 +46,9 @@ jobs:
       #   shell: sh
       #   run: $([[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config)
       - run: |
-        ssh-agent -s
-        echo "$DEPLOY_KEY" | ssh-add -
-        ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
+          ssh-agent -s
+          echo "$DEPLOY_KEY" | ssh-add -
+          ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
       # - run: ssh-add -l
       # - run: ssh -t ec2-user@3.1.191.125 sudo ifconfig eth0
       # - run: ssh-add -D
